@@ -18,7 +18,7 @@ export interface SiteConfig {
 }
 
 export const site: SiteConfig = {
-  url: "https://web-porto-ammar-hilmy.vercel.app",
+  url: "https://ammarhilmy-dev.vercel.app",
   title: "Ammar Hilmy Ramzy — Front-End Developer",
   description:
     "Portfolio of Ammar Hilmy Ramzy, a Front-End Developer from Tangerang Selatan, Indonesia. Informatics Engineering graduate building accessible web interfaces with Laravel, Blade, Alpine.js, and Tailwind CSS.",
