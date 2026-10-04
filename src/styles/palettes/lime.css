@@ -1,0 +1,25 @@
+/* lime — alternative palette. Activate with <html data-palette="lime">.
+   HAZARD: the dark accent #C8F25D is ~1.4:1 against white, so the light accent
+   #3D7A00 is mandatory if a light theme is ever enabled. The contrast gate
+   (scripts/check-contrast.mjs) enforces this. */
+[data-palette="lime"] {
+  --p-base: #0c0d10;
+  --p-surface: #14161b;
+  --p-border: #262a33;
+  --p-text: #edeef2;
+  --p-muted: #a0a4b0;
+  --p-accent: #c8f25d;
+  --p-ink: #0c0d10;
+  --p-status: #22c55e;
+}
+
+[data-palette="lime"][data-theme="light"] {
+  --p-base: #ffffff;
+  --p-surface: #f7f8fa;
+  --p-border: #e2e5eb;
+  --p-text: #111318;
+  --p-muted: #5c6170;
+  --p-accent: #3d7a00;
+  --p-ink: #ffffff;
+  --p-status: #15803d;
+}

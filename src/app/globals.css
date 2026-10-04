@@ -1,0 +1,190 @@
+@import "tailwindcss";
+
+/* All four palettes ship with the app. Switching is one attribute on <html>:
+   data-palette="sage" | "lime" | "cyan" | "amber" */
+@import "../styles/palettes/sage.css";
+@import "../styles/palettes/lime.css";
+@import "../styles/palettes/cyan.css";
+@import "../styles/palettes/amber.css";
+
+/* ---------------------------------------------------------------------------
+   Theme tokens — the ONLY place colour reaches Tailwind.
+   Components must never hard-code a hex value; they use bg-base, bg-surface,
+   border-border, text-accent, text-muted, text-ink, and
+   shadow-[4px_4px_0_0_var(--color-accent)].
+--------------------------------------------------------------------------- */
+@theme {
+  --color-base: var(--p-base);
+  --color-surface: var(--p-surface);
+  --color-border: var(--p-border);
+  --color-text: var(--p-text);
+  --color-muted: var(--p-muted);
+  --color-accent: var(--p-accent);
+  --color-ink: var(--p-ink);
+  /* Semantic availability indicator — palette-controlled, not a stray literal. */
+  --color-status: var(--p-status);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  /* System mono: the technical-label look with zero font bytes.
+     Replaces a self-hosted JetBrains Mono that shipped ~47 KB gzipped
+     for labels, numbers, and chips. */
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+
+  --radius-card: 12px;
+  --radius-btn: 8px;
+}
+
+@layer base {
+  html {
+    background: var(--color-base);
+    color: var(--color-text);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-ink);
+  }
+
+  /* Every animation on this site must be opt-out-able. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Case-study body typography.
+
+   Markdown rendered by marked() arrives as bare <h2>, <p>, <ul>, <table>.
+   Tailwind's preflight strips their default styling, so they need explicit
+   treatment here. Written by hand rather than pulling in @tailwindcss/typography:
+   it is a small, fixed set of elements and this avoids another dependency.
+--------------------------------------------------------------------------- */
+.case-study-body h2 {
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+}
+
+.case-study-body h3 {
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.case-study-body p {
+  margin-bottom: 1rem;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--color-muted);
+}
+
+.case-study-body strong {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.case-study-body em {
+  font-style: italic;
+}
+
+.case-study-body a {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.case-study-body ul {
+  margin-bottom: 1rem;
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+
+.case-study-body li {
+  margin-bottom: 0.4rem;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-muted);
+}
+
+.case-study-body code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  padding: 0.1rem 0.35rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  color: var(--color-accent);
+}
+
+.case-study-body table {
+  width: 100%;
+  margin-bottom: 1.25rem;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.case-study-body th,
+.case-study-body td {
+  border: 2px solid var(--color-border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+.case-study-body th {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+  background: var(--color-surface);
+}
+
+.case-study-body td {
+  color: var(--color-muted);
+}
+
+.case-study-body hr {
+  margin: 2rem 0;
+  border: 0;
+  border-top: 2px solid var(--color-border);
+}
+
+/* Blinking cursor used by the logo and the role rotator.
+   Disabled by the reduced-motion rule above. */
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.cursor-blink {
+  animation: blink 1.1s step-end infinite;
+}
