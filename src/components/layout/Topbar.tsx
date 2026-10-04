@@ -9,20 +9,13 @@
  */
 
 import Link from "next/link";
-import { profile } from "@/data/profile";
 import { site } from "@/data/site";
+import { Download } from "@/components/ui/Icon";
 
 export function Topbar() {
   return (
     <header className="sticky top-0 z-40 border-b-2 border-border bg-base/90 backdrop-blur">
       <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-4 px-5 py-2">
-        <Link
-          href="/"
-          className="inline-flex min-h-[44px] items-center font-mono text-[15px] font-bold tracking-tight text-text"
-          aria-label={`${profile.name} — home`}
-        >
-          AH<span className="cursor-blink text-accent">_</span>
-        </Link>
 
         <nav aria-label="Main" className="hidden items-center gap-6 sm:flex">
           {site.nav.map((item) => (
@@ -36,15 +29,14 @@ export function Topbar() {
           ))}
         </nav>
 
-        <span className="inline-flex min-h-[36px] items-center gap-2 rounded-full border-2 border-border px-3 py-1">
-          <span
-            className="h-2 w-2 rounded-full bg-status"
-            aria-hidden="true"
-          />
-          <span className="font-mono text-[11px] uppercase tracking-wider text-muted">
-            {profile.availability}
-          </span>
-        </span>
+        <a
+          href="/cv/ammar-hilmy-ramzy-cv.pdf"
+          download
+          className="inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-btn)] border-2 border-accent bg-accent px-4 py-2 font-mono text-[11px] uppercase tracking-wider text-ink shadow-[4px_4px_0_0_var(--color-border)] transition-transform hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0_0_var(--color-border)]"
+        >
+          Download CV
+          <Download className="h-3.5 w-3.5" aria-hidden="true" />
+        </a>
       </div>
     </header>
   );

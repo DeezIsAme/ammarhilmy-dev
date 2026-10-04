@@ -11,7 +11,7 @@
  */
 
 import { Hero } from "@/components/home/Hero";
-import { StatsBento } from "@/components/home/StatsBento";
+import { Glance } from "@/components/home/Glance";
 import { TechStack } from "@/components/home/TechStack";
 import { ExperienceList } from "@/components/home/ExperienceList";
 import { ProjectGrid } from "@/components/home/ProjectGrid";
@@ -29,7 +29,7 @@ export default function HomePage() {
         <h2 id="stats-heading" className="sr-only">
           At a glance
         </h2>
-        <StatsBento />
+        <Glance />
       </section>
 
       <section className="mt-20" aria-labelledby="skills-heading">

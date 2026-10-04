@@ -17,6 +17,8 @@ export interface Profile {
   headline: string;
   location: string;
   availability: string;
+  /** Working arrangement, stated once and reused by the glance and contact pages. */
+  workplace: string;
   /** One-line positioning statement shown in the hero. */
   summary: string;
   /**
@@ -26,6 +28,19 @@ export interface Profile {
    */
   roles: string[];
   contacts: Contact[];
+  /**
+   * The introduction shown in the "At a glance" section.
+   *
+   * Deliberately factual rather than motivational. Every sentence here must be
+   * traceable to IDEA.md §3; nothing is claimed as expertise that the projects
+   * or the thesis do not evidence.
+   */
+  glance: {
+    lead: string;
+    paragraphs: string[];
+    /** The three areas the work actually spans, labelled as areas worked across. */
+    tracks: string[];
+  };
 }
 
 export const profile: Profile = {
@@ -33,9 +48,19 @@ export const profile: Profile = {
   headline: "Front-End Developer",
   location: "Tangerang Selatan, Banten, Indonesia",
   availability: "Open to work",
+  workplace: "Open to on-site, hybrid, and remote arrangements",
   summary:
     "Informatics Engineering graduate who builds accessible, responsive web interfaces with Laravel, Blade, Alpine.js, and Tailwind CSS — with project work in AI/LLM fine-tuning and embedded systems.",
   roles: ["Front-End Developer", "Web Developer", "AI & Embedded Explorer"],
+  glance: {
+    lead: "Front-end developer, four verified projects, three different problem domains.",
+    paragraphs: [
+      "I am an Informatics Engineering graduate from UIN Syarif Hidayatullah Jakarta. My work is front-end: I build the interface layer of Laravel applications in Blade, Alpine.js, and Tailwind CSS, and in both Laravel projects I worked alongside a backend teammate rather than owning the server side myself.",
+      "The projects below are the evidence. A cooperative financial system covering transactions, savings, and loans; a hackathon AI agent that streams its execution steps to a live workspace panel; a fine-tuned LLaMA 3.1 model for English test question generation, written up as an undergraduate thesis; and an ESP32 controller that reads sensors and drives a heater.",
+      "Three of those sit outside web development, and that is deliberate. Building them taught me things the web stack alone would not: how a streaming protocol behaves when state gets messy, why a single isnan guard decides whether hardware does something unexpected, and what a model's metrics actually say about its output.",
+    ],
+    tracks: ["Web interfaces", "AI / LLM", "Embedded systems"],
+  },
   contacts: [
     {
       label: "Email",

@@ -11,9 +11,6 @@ export function Footer() {
     <footer className="mt-24 border-t-2 border-border">
       <div className="mx-auto flex max-w-[1200px] flex-col gap-6 px-5 py-10 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-col gap-1">
-          <span className="font-mono text-[15px] font-bold text-text">
-            AH<span className="cursor-blink text-accent">_</span>
-          </span>
           <span className="text-[13px] text-muted">
             © {new Date().getFullYear()} {profile.name}
           </span>

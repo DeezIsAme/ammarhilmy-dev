@@ -54,7 +54,7 @@ const personSchema = {
   "@type": "Person",
   name: profile.name,
   url: site.url,
-  image: `${site.url}/profile.png`,
+  image: `${site.url}/profile.jpg`,
   email: "ammarhilmy35@gmail.com",
   jobTitle: profile.headline,
   description: site.description,

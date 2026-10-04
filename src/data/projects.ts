@@ -38,7 +38,7 @@ export const projects: Project[] = [
       "Undergraduate thesis: fine-tuned LLaMA 3.1 8B Instruct with LoRA to generate ETIC Structure-section multiple-choice simulation questions, then evaluated output quality across two prompt scenarios.",
     stack: ["Python", "PyTorch", "Transformers", "PEFT", "TRL", "Unsloth", "LLaMA 3.1"],
     featured: true,
-    image: "/projects/etic-question-generator.png",
+    image: "/projects/etic-question-generator.jpg",
   },
   {
     slug: "sectors-copilot",
@@ -50,7 +50,7 @@ export const projects: Project[] = [
       "Hackathon-built multi-step AI research agent: a Laravel application where the agent's execution steps stream to a live workspace panel as they run.",
     stack: ["Laravel", "Blade", "Alpine.js", "Preline UI", "Tailwind CSS v4", "Server-Sent Events"],
     featured: true,
-    image: "/projects/sectors-copilot.png",
+    image: "/projects/sectors-copilot.jpg",
   },
   {
     slug: "koperasi-financial-system",
@@ -63,7 +63,7 @@ export const projects: Project[] = [
     stack: ["Laravel", "MySQL", "Blade", "Tailwind CSS", "Alpine.js"],
     repo: "https://gitlab.com/jakewd7/koperasilaravel",
     featured: true,
-    image: "/projects/koperasi-financial-system.png",
+    image: "/projects/koperasi-financial-system.jpg",
   },
   {
     slug: "esp32-grain-dryer",
@@ -75,6 +75,6 @@ export const projects: Project[] = [
       "Embedded Systems course project: an ESP32 in C reads temperature, humidity, light, and rain sensors, then drives a relay-controlled heater through threshold-based conditional logic.",
     stack: ["C", "ESP32", "DHT22", "BH1750", "Relay Control"],
     featured: true,
-    image: "/projects/esp32-grain-dryer.png",
+    image: "/projects/esp32-grain-dryer.jpg",
   },
 ];
