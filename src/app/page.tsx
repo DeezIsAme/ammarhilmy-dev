@@ -18,21 +18,23 @@ import { ProjectGrid } from "@/components/home/ProjectGrid";
 import { CertificationGroups } from "@/components/home/CertificationGroups";
 import { ContactCards } from "@/components/home/ContactCards";
 import { SectionHeader } from "@/components/layout/SectionHeader";
+import { SectionLink } from "@/components/layout/SectionLink";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
 
-      <section className="mt-16" aria-labelledby="stats-heading">
+      <section id="about" className="mt-16 scroll-mt-20" aria-labelledby="stats-heading">
         <SectionHeader number="02" label="At a glance" />
         <h2 id="stats-heading" className="sr-only">
           At a glance
         </h2>
         <Glance />
+        <SectionLink href="/about" label="Full background" />
       </section>
 
-      <section className="mt-20" aria-labelledby="skills-heading">
+      <section id="skills" className="mt-20 scroll-mt-20" aria-labelledby="skills-heading">
         <SectionHeader number="03" label="Tech stack & skills" />
         <h2 id="skills-heading" className="sr-only">
           Tech stack and skills
@@ -40,7 +42,7 @@ export default function HomePage() {
         <TechStack />
       </section>
 
-      <section className="mt-20" aria-labelledby="experience-heading">
+      <section id="experience" className="mt-20 scroll-mt-20" aria-labelledby="experience-heading">
         <SectionHeader number="04" label="Experience" />
         <h2 id="experience-heading" className="sr-only">
           Experience
@@ -54,17 +56,19 @@ export default function HomePage() {
           Projects
         </h2>
         <ProjectGrid />
+        <SectionLink href="/projects" label="All projects" />
       </section>
 
-      <section className="mt-20" aria-labelledby="certs-heading">
+      <section id="certifications" className="mt-20 scroll-mt-20" aria-labelledby="certs-heading">
         <SectionHeader number="06" label="Certifications" />
         <h2 id="certs-heading" className="sr-only">
           Certifications
         </h2>
         <CertificationGroups />
+        <SectionLink href="/certifications" label="All 16 credentials" />
       </section>
 
-      <section className="mt-20" aria-labelledby="contact-heading">
+      <section id="contact" className="mt-20 scroll-mt-20" aria-labelledby="contact-heading">
         <SectionHeader number="07" label="Contact" />
         <h2 id="contact-heading" className="sr-only">
           Contact

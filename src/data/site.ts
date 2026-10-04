@@ -22,10 +22,15 @@ export const site: SiteConfig = {
   title: "Ammar Hilmy Ramzy — Front-End Developer",
   description:
     "Portfolio of Ammar Hilmy Ramzy, a Front-End Developer from Tangerang Selatan, Indonesia. Informatics Engineering graduate building accessible web interfaces with Laravel, Blade, Alpine.js, and Tailwind CSS.",
+  /**
+   * In-page anchors, not routes: the topbar scrolls to a section on the
+   * homepage instead of navigating away. A "#" prefix on a different route
+   * still works (Next.js routes home first, then scrolls to the target).
+   */
   nav: [
-    { label: "About", href: "/about" },
-    { label: "Projects", href: "/projects" },
-    { label: "Certifications", href: "/certifications" },
-    { label: "Contact", href: "/contact" },
+    { label: "About", href: "/#about" },
+    { label: "Projects", href: "/#projects" },
+    { label: "Certifications", href: "/#certifications" },
+    { label: "Contact", href: "/#contact" },
   ],
 };

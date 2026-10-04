@@ -8,9 +8,9 @@
  * of the six-token palette, and it must read as "available" in every palette.
  */
 
-import Link from "next/link";
 import { site } from "@/data/site";
 import { Download } from "@/components/ui/Icon";
+import { NavLink } from "@/components/layout/NavLink";
 
 export function Topbar() {
   return (
@@ -19,13 +19,13 @@ export function Topbar() {
 
         <nav aria-label="Main" className="hidden items-center gap-6 sm:flex">
           {site.nav.map((item) => (
-            <Link
+            <NavLink
               key={item.href}
               href={item.href}
               className="inline-flex min-h-[44px] items-center px-1 text-[14px] text-muted transition-colors hover:text-accent"
             >
               {item.label}
-            </Link>
+            </NavLink>
           ))}
         </nav>
 
