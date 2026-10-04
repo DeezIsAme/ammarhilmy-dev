@@ -36,14 +36,14 @@ export function Hero() {
         <div className="mt-8 flex flex-wrap items-center gap-3">
           <a
             href="#projects"
-            className="inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-btn)] border-2 border-accent bg-accent px-5 py-2.5 text-[14px] font-semibold text-ink shadow-[4px_4px_0_0_var(--color-border)] transition-transform hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0_0_var(--color-border)]"
+            className="hover-zoom-sm inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-btn)] border-2 border-accent bg-accent px-5 py-2.5 text-[14px] font-semibold text-ink shadow-[4px_4px_0_0_var(--color-border)]"
           >
             View projects
             <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
           </a>
           <a
             href="/resume"
-            className="inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-btn)] border-2 border-border px-5 py-2.5 text-[14px] font-semibold text-text shadow-[4px_4px_0_0_var(--color-accent)] transition-transform hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0_0_var(--color-accent)]"
+            className="hover-zoom-sm inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-btn)] border-2 border-border px-5 py-2.5 text-[14px] font-semibold text-text shadow-[4px_4px_0_0_var(--color-accent)]"
           >
             Download CV
             <Download className="h-4 w-4" aria-hidden="true" />
@@ -51,7 +51,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="order-first w-[180px] shrink-0 overflow-hidden rounded-[var(--radius-card)] border-2 border-border bg-surface shadow-[4px_4px_0_0_var(--color-accent)] lg:order-last lg:w-full">
+      <div className="hover-zoom order-first w-[180px] shrink-0 overflow-hidden rounded-[var(--radius-card)] border-2 border-border bg-surface shadow-[4px_4px_0_0_var(--color-accent)] lg:order-last lg:w-full">
         <div className="relative aspect-square w-full">
           <Image
             src="/profile.jpg"

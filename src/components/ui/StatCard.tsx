@@ -11,7 +11,7 @@ export function StatCard({ stat }: { stat: Stat }) {
   return (
     <div
       className={[
-        "flex flex-col justify-center rounded-[var(--radius-card)] border-2 border-border p-5",
+        "hover-zoom flex flex-col justify-center rounded-[var(--radius-card)] border-2 border-border p-5",
         accent
           ? "bg-accent text-ink shadow-[4px_4px_0_0_var(--color-border)]"
           : "bg-surface shadow-[4px_4px_0_0_var(--color-accent)]",

@@ -22,7 +22,7 @@ export function Button({
   className = "",
 }: ButtonProps) {
   const shared =
-    "inline-flex min-h-[44px] items-center justify-center gap-2 rounded-[var(--radius-btn)] border-2 px-5 py-2.5 text-[14px] font-semibold transition-transform";
+    "hover-zoom-sm inline-flex min-h-[44px] items-center justify-center gap-2 rounded-[var(--radius-btn)] border-2 px-5 py-2.5 text-[14px] font-semibold";
   const styles =
     variant === "primary"
       ? "border-accent bg-accent text-ink shadow-[4px_4px_0_0_var(--color-border)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0_0_var(--color-border)]"

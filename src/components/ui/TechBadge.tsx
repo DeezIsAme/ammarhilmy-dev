@@ -46,7 +46,7 @@ export function TechBadge({ skill }: { skill: Skill }) {
   return (
     <li className="flex flex-col items-center gap-2">
       <span
-        className="flex h-12 w-12 items-center justify-center rounded-[10px] border-2 border-border"
+        className="hover-zoom-sm flex h-12 w-12 items-center justify-center rounded-[10px] border-2 border-border"
         style={{ backgroundColor: PLATE_BG }}
         aria-hidden="true"
       >

@@ -172,6 +172,47 @@
   border-top: 2px solid var(--color-border);
 }
 
+/* ---------------------------------------------------------------------------
+   Hover zoom.
+
+   One shared utility rather than a scale class sprinkled on each element, so
+   every surface grows by the same amount and at the same speed.
+
+   Guarded by `@media (hover: hover)` because a touch device has no hover to
+   leave: without the guard, tapping a card would leave it stuck enlarged.
+
+   Disabled under prefers-reduced-motion — the rest of the site already honours
+   that setting, and a moving target is exactly what it is meant to avoid.
+--------------------------------------------------------------------------- */
+@media (hover: hover) {
+  .hover-zoom,
+  .hover-zoom-sm {
+    transition:
+      transform 200ms ease-out,
+      box-shadow 200ms ease-out,
+      border-color 200ms ease-out,
+      color 200ms ease-out;
+    will-change: transform;
+  }
+
+  /* Cards and other large surfaces. */
+  .hover-zoom:hover {
+    transform: scale(1.02);
+  }
+
+  /* Buttons and small controls, where 1.02 would be imperceptible. */
+  .hover-zoom-sm:hover {
+    transform: scale(1.05);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hover-zoom:hover,
+  .hover-zoom-sm:hover {
+    transform: none;
+  }
+}
+
 /* Blinking cursor used by the logo and the role rotator.
    Disabled by the reduced-motion rule above. */
 @keyframes blink {

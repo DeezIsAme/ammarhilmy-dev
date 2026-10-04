@@ -20,7 +20,7 @@ export function Card({ children, className = "", shadow = true }: CardProps) {
     <div
       className={[
         "rounded-[var(--radius-card)] border-2 border-border bg-surface",
-        shadow ? "shadow-[4px_4px_0_0_var(--color-accent)]" : "",
+        shadow ? "hover-zoom shadow-[4px_4px_0_0_var(--color-accent)]" : "",
         className,
       ]
         .filter(Boolean)

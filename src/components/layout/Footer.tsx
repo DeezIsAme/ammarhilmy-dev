@@ -27,7 +27,7 @@ export function Footer() {
               target={contact.href.startsWith("http") ? "_blank" : undefined}
               rel={contact.href.startsWith("http") ? "noopener noreferrer" : undefined}
               aria-label={contact.label}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-[var(--radius-btn)] border-2 border-border text-muted transition-colors hover:border-accent hover:text-accent"
+              className="hover-zoom-sm inline-flex h-11 w-11 items-center justify-center rounded-[var(--radius-btn)] border-2 border-border text-muted hover:border-accent hover:text-accent"
             >
               <ContactIconMark name={contact.icon} />
             </a>
@@ -36,7 +36,7 @@ export function Footer() {
 
         <Link
           href="/contact"
-          className="inline-flex min-h-[44px] items-center gap-2 self-start rounded-full border-2 border-border px-3 py-1 sm:self-auto"
+          className="hover-zoom-sm inline-flex min-h-[44px] items-center gap-2 self-start rounded-full border-2 border-border px-3 py-1 sm:self-auto"
         >
           <span className="h-2 w-2 rounded-full bg-status" aria-hidden="true" />
           <span className="font-mono text-[11px] uppercase tracking-wider text-muted">
