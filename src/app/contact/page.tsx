@@ -6,7 +6,7 @@ import { SectionHeader } from "@/components/layout/SectionHeader";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with Ammar Hilmy Ramzy — Front-End Developer based in Tangerang Selatan, Indonesia. Available by email, LinkedIn, GitHub, and WhatsApp.",
+    "Get in touch with Ammar Hilmy Ramzy — Web Developer based in Tangerang Selatan, Indonesia. Available by email, LinkedIn, GitHub, and WhatsApp.",
   alternates: { canonical: "/contact" },
   openGraph: {
     title: "Contact — Ammar Hilmy Ramzy",

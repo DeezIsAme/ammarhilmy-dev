@@ -19,9 +19,9 @@ export interface SiteConfig {
 
 export const site: SiteConfig = {
   url: "https://ammarhilmy-dev.vercel.app",
-  title: "Ammar Hilmy Ramzy — Front-End Developer",
+  title: "Ammar Hilmy Ramzy — Web Developer",
   description:
-    "Portfolio of Ammar Hilmy Ramzy, a Front-End Developer from Tangerang Selatan, Indonesia. Informatics Engineering graduate building accessible web interfaces with Laravel, Blade, Alpine.js, and Tailwind CSS.",
+    "Portfolio of Ammar Hilmy Ramzy, a Web Developer from Tangerang Selatan, Indonesia. Informatics Engineering graduate building accessible web applications with Laravel, Blade, Alpine.js, and Tailwind CSS.",
   /**
    * In-page anchors, not routes: the topbar scrolls to a section on the
    * homepage instead of navigating away. A "#" prefix on a different route

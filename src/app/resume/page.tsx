@@ -7,7 +7,7 @@ import { profile } from "@/data/profile";
 export const metadata: Metadata = {
   title: "Resume",
   description:
-    "Curriculum vitae of Ammar Hilmy Ramzy, Front-End Developer — education, projects, experience, certifications, and skills. Tailored variants available on request.",
+    "Curriculum vitae of Ammar Hilmy Ramzy, Web Developer — education, projects, experience, certifications, and skills. Tailored variants available on request.",
   alternates: { canonical: "/resume" },
   openGraph: {
     title: "Resume — Ammar Hilmy Ramzy",

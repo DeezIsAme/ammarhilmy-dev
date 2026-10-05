@@ -8,12 +8,12 @@ import { ExperienceList } from "@/components/home/ExperienceList";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Ammar Hilmy Ramzy — Informatics Engineering graduate from UIN Syarif Hidayatullah Jakarta (GPA 3.70) with front-end development and language-testing operations experience.",
+    "Ammar Hilmy Ramzy — Informatics Engineering graduate from UIN Syarif Hidayatullah Jakarta (GPA 3.70) with web development and language-testing operations experience.",
   alternates: { canonical: "/about" },
   openGraph: {
     title: "About — Ammar Hilmy Ramzy",
     description:
-      "Education and experience of Ammar Hilmy Ramzy, Front-End Developer from Tangerang Selatan, Indonesia.",
+      "Education and experience of Ammar Hilmy Ramzy, Web Developer from Tangerang Selatan, Indonesia.",
     url: "/about",
   },
 };

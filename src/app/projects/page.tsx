@@ -5,12 +5,12 @@ import { SectionHeader } from "@/components/layout/SectionHeader";
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "Four source-verified projects by Ammar Hilmy Ramzy: an LLM fine-tuning thesis, a multi-step AI research agent, a cooperative financial system, and an ESP32 embedded prototype.",
+    "Four source-verified projects by Ammar Hilmy Ramzy: an LLM fine-tuning thesis, a multi-step AI research agent, a cooperative financial system, and an ESP32 sensor-controller prototype.",
   alternates: { canonical: "/projects" },
   openGraph: {
     title: "Projects — Ammar Hilmy Ramzy",
     description:
-      "Four source-verified projects spanning AI/LLM, web development, and embedded systems.",
+      "Four source-verified projects spanning AI/LLM, web development, and sensor-driven prototypes.",
     url: "/projects",
   },
 };

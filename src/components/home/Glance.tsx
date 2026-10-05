@@ -6,7 +6,7 @@
  * reads as a single block rather than two stacked sections.
  *
  * Content is factual rather than promotional: it states the role, names the
- * constraint (front-end, alongside a backend teammate), and points at the
+ * constraint (interface work, alongside a backend teammate), and points at the
  * projects as the evidence. See profile.glance in src/data/profile.ts.
  */
 

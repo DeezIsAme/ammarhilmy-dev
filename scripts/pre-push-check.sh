@@ -5,6 +5,7 @@
 #   - node_modules / .next must not be tracked
 #   - the internal working documents must not be tracked
 #   - the duplicate root photo must not be tracked
+#   - the local CodeGraph index must not be tracked
 #
 # Usage: bash scripts/pre-push-check.sh   (run from anywhere)
 
@@ -29,7 +30,7 @@ echo
 
 FAIL=0
 echo "Must NOT be tracked:"
-for f in WEB-PORTO-SPEC.md WEB-PORTO-PLAN.md DSC05785-removebg-preview.png next-env.d.ts; do
+for f in WEB-PORTO-SPEC.md WEB-PORTO-PLAN.md DSC05785-removebg-preview.png next-env.d.ts .codegraph; do
   if git ls-files --error-unmatch "$f" > /dev/null 2>&1; then
     printf '  %-34s TRACKED  <-- fix this\n' "$f"
     FAIL=1

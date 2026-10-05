@@ -80,6 +80,15 @@ coverage/
 .nyc_output/
 
 # ---------------------------------------------------------------------------
+# CodeGraph — local code index
+#
+# .codegraph/ holds a SQLite database and WAL journal that change on every
+# index run. It is a local tool artifact: machine-specific, constantly
+# rewritten, and regenerated with `codegraph init`.
+# ---------------------------------------------------------------------------
+.codegraph/
+
+# ---------------------------------------------------------------------------
 # Misc
 # ---------------------------------------------------------------------------
 *.pem

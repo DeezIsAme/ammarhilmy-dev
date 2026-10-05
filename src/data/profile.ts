@@ -22,9 +22,11 @@ export interface Profile {
   /** One-line positioning statement shown in the hero. */
   summary: string;
   /**
-   * Rotating role line. All three are honest: front-end is the verified
-   * professional role; "Web Developer" is the wider verified skill set;
-   * AI/embedded is verified project work framed as exploration.
+   * Rotating role line. Both are honest: "Web Developer" is the verified
+   * professional skill set; data & AI is verified project work framed as
+   * enthusiasm rather than a claimed job title. The interface-level work is
+   * stated in `glance` instead of being carried as a job title — see IDEA.md
+   * §6 on role accuracy.
    */
   roles: string[];
   contacts: Contact[];
@@ -45,21 +47,21 @@ export interface Profile {
 
 export const profile: Profile = {
   name: "Ammar Hilmy Ramzy",
-  headline: "Front-End Developer",
+  headline: "Web Developer",
   location: "Tangerang Selatan, Banten, Indonesia",
   availability: "Open to work",
   workplace: "Open to on-site, hybrid, and remote arrangements",
   summary:
-    "Informatics Engineering graduate who builds accessible, responsive web interfaces with Laravel, Blade, Alpine.js, and Tailwind CSS — with project work in AI/LLM fine-tuning and embedded systems.",
-  roles: ["Front-End Developer", "Web Developer", "AI & Embedded Explorer"],
+    "Informatics Engineering graduate who builds accessible, responsive web applications with Laravel, Blade, Alpine.js, and Tailwind CSS — with project work in AI/LLM fine-tuning and data.",
+  roles: ["Web Developer", "Data & AI Enthusiast"],
   glance: {
-    lead: "Front-end developer, four verified projects, three different problem domains.",
+    lead: "Web developer, four verified projects, three different problem domains.",
     paragraphs: [
-      "I am an Informatics Engineering graduate from UIN Syarif Hidayatullah Jakarta. My work is front-end: I build the interface layer of Laravel applications in Blade, Alpine.js, and Tailwind CSS, and in both Laravel projects I worked alongside a backend teammate rather than owning the server side myself.",
+      "I am an Informatics Engineering graduate from UIN Syarif Hidayatullah Jakarta. I build web applications in Laravel, Blade, Alpine.js, and Tailwind CSS. In both Laravel projects I worked on the interface layer alongside a backend teammate rather than owning the server side — and the server side is what I am working toward next.",
       "The projects below are the evidence. A cooperative financial system covering transactions, savings, and loans; a hackathon AI agent that streams its execution steps to a live workspace panel; a fine-tuned LLaMA 3.1 model for English test question generation, written up as an undergraduate thesis; and an ESP32 controller that reads sensors and drives a heater.",
-      "Three of those sit outside web development, and that is deliberate. Building them taught me things the web stack alone would not: how a streaming protocol behaves when state gets messy, why a single isnan guard decides whether hardware does something unexpected, and what a model's metrics actually say about its output.",
+      "Three of those sit outside web development, and that is deliberate. Building them taught me things the web stack alone would not: how a streaming protocol behaves when state gets messy, how a model's metrics actually describe its output, and how much of the work is deciding what the data is even allowed to say.",
     ],
-    tracks: ["Web interfaces", "AI / LLM", "Embedded systems"],
+    tracks: ["Web development", "AI / LLM", "Data engineering"],
   },
   contacts: [
     {
