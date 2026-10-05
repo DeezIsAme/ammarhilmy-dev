@@ -5,9 +5,10 @@
  * so sharing its link produced an empty preview. This file exists so a shared
  * link renders a real card.
  *
- * Colours are read from the active palette values directly (ImageResponse
- * cannot use CSS custom properties), so they are duplicated from sage.css —
- * update both if the default palette changes.
+ * Colours are duplicated from the ACTIVE palette (retro.css) because
+ * ImageResponse cannot read CSS custom properties. This is the one place a
+ * palette value is copied rather than imported — update it whenever the
+ * active palette in src/app/layout.tsx changes.
  */
 
 import { ImageResponse } from "next/og";
@@ -18,12 +19,12 @@ export const alt = `${profile.name} — ${profile.headline}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const BASE = "#0B0F0D";
-const SURFACE = "#131A17";
-const BORDER = "#2A3630";
-const TEXT = "#E8F0EC";
-const MUTED = "#9BA8A1";
-const ACCENT = "#A9DDBE";
+const BASE = "#1A1A1A";
+const SURFACE = "#232323";
+const BORDER = "#4B607F";
+const TEXT = "#E8D8C9";
+const MUTED = "#A89A8C";
+const ACCENT = "#F3701E";
 
 export default function OpengraphImage() {
   return new ImageResponse(

@@ -1,0 +1,47 @@
+/* retro — the palette (American retro: cream on near-black, slate
+   structure, orange accent).
+   Activate with <html data-palette="retro">, set in src/app/layout.tsx.
+
+   Source: a four-colour reference — #e8d8c9 cream, #4b607f slate,
+   #f3701e orange, #1a1a1a near-black background. Those four map onto the
+   site's eight tokens; the remaining four (surface, muted, ink, status)
+   are derived so the existing contrast thresholds hold.
+
+   Contrast gate: all nine pairs in scripts/check-contrast.mjs pass in both
+   themes. Do not edit a value here without re-running `npm run check`.
+
+   ROLLBACK: this replaced an earlier palette (sage, plus lime/cyan/amber
+   alternatives), all removed from the tree once retro was approved. To undo,
+   restore the deleted files from git history and re-add their @import lines
+   in src/app/globals.css. `git log --diff-filter=D -- src/styles/palettes`
+   finds the removal commit.
+
+   This file also owns the bare `:root` fallback below. Exactly one palette
+   may define `:root`: every [data-palette="..."] selector has the same
+   specificity as `:root`, so if two files declare it the later import wins
+   regardless of which attribute is set. Keeping it here and nowhere else
+   means the active palette is always the one that decides. */
+:root,
+[data-palette="retro"] {
+  --p-base: #1a1a1a;
+  --p-surface: #232323;
+  --p-border: #4b607f;
+  --p-text: #e8d8c9;
+  --p-muted: #a89a8c;
+  --p-accent: #f3701e;
+  --p-ink: #1a1a1a;
+  --p-status: #22c55e;
+}
+
+/* Kept so the accent is proven legible on a light surface too, same as the
+   other palettes. `data-theme="light"` is never applied by the app today. */
+[data-palette="retro"][data-theme="light"] {
+  --p-base: #faf9f6;
+  --p-surface: #ffffff;
+  --p-border: #4b607f;
+  --p-text: #1a1a1a;
+  --p-muted: #5f574d;
+  --p-accent: #c2410c;
+  --p-ink: #ffffff;
+  --p-status: #15803d;
+}

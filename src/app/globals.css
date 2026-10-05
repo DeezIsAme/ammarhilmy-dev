@@ -1,11 +1,13 @@
 @import "tailwindcss";
 
-/* All four palettes ship with the app. Switching is one attribute on <html>:
-   data-palette="sage" | "lime" | "cyan" | "amber" */
-@import "../styles/palettes/sage.css";
-@import "../styles/palettes/lime.css";
-@import "../styles/palettes/cyan.css";
-@import "../styles/palettes/amber.css";
+/* One palette. Switching is one attribute on <html>: data-palette="retro",
+   set in src/app/layout.tsx. Every component reads colour from these tokens.
+
+   sage, lime, cyan, and amber were removed once retro was approved. To bring
+   one back: restore its file from git history, add the @import here, and set
+   data-palette in layout.tsx. Only ONE palette file may declare `:root` —
+   see the note in retro.css for why. */
+@import "../styles/palettes/retro.css";
 
 /* ---------------------------------------------------------------------------
    Theme tokens — the ONLY place colour reaches Tailwind.

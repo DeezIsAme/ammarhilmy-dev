@@ -76,7 +76,7 @@ const personSchema = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-palette="sage" className={inter.variable}>
+    <html lang="en" data-palette="retro" className={inter.variable}>
       <body className="min-h-screen bg-base">
         <a
           href="#main"
