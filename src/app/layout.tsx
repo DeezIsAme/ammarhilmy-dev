@@ -12,7 +12,7 @@
 
 import type { Metadata } from "next";
 import "./globals.css";
-import { zzz } from "@/fonts/font";
+import { zzz, monogram } from "@/fonts/font";
 import { profile } from "@/data/profile";
 import { site } from "@/data/site";
 import { Topbar } from "@/components/layout/Topbar";
@@ -71,7 +71,7 @@ const personSchema = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-palette="retro" className={zzz.variable}>
+    <html lang="en" data-palette="retro" className={`${zzz.variable} ${monogram.variable}`}>
       <body className="min-h-screen bg-base">
         <a
           href="#main"

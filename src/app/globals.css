@@ -233,3 +233,16 @@
 .cursor-blink {
   animation: blink 1.1s step-end infinite;
 }
+
+/* Header monogram — "AMMAR" in the ZZZ System face.
+   Scoped to a class rather than added to the font-sans stack: the face has no
+   punctuation and renders lowercase as capitals, so it must never reach body
+   copy. letter-spacing is positive because ZZZ System draws its letters with
+   very little side bearing, and tight tracking makes the strokes collide. */
+.monogram {
+  font-family: var(--font-monogram), ui-monospace, Menlo, Consolas, monospace;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  /* The face has no case distinction, so capitals are stated, not implied. */
+  text-transform: uppercase;
+}

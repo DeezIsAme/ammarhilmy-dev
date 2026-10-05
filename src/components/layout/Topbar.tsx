@@ -4,10 +4,23 @@
  * A reference site stacked four simultaneous floating layers and its nav dock
  * ended up covering the project cards. One sticky bar is the whole budget.
  *
+ * Layout across breakpoints:
+ *   - under `sm` — monogram on the left, Download CV on the right, nothing else.
+ *     The nav links are hidden because four text links plus a button do not fit
+ *     a phone without wrapping or shrinking below a comfortable tap target.
+ *   - `sm` and up — monogram, then the nav, then the button.
+ *
+ * The monogram reads "AMMAR" and is set in the ZZZ System face, subset to the
+ * three letters it needs. Uppercase is forced in the markup rather than left to
+ * `text-transform`, because that face renders lowercase as full capitals anyway
+ * — being explicit keeps the intent readable in the source.
+ *
  * The status dot uses a fixed green: it is a semantic status colour, not part
  * of the six-token palette, and it must read as "available" in every palette.
  */
 
+import Link from "next/link";
+import { profile } from "@/data/profile";
 import { site } from "@/data/site";
 import { Download } from "@/components/ui/Icon";
 import { NavLink } from "@/components/layout/NavLink";
@@ -15,7 +28,15 @@ import { NavLink } from "@/components/layout/NavLink";
 export function Topbar() {
   return (
     <header className="sticky top-0 z-40 border-b-2 border-border bg-base/90 backdrop-blur">
-      <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-4 px-5 py-2">
+      <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-3 px-4 py-2 sm:gap-4 sm:px-5">
+
+        <Link
+          href="/"
+          aria-label={`${profile.name} — home`}
+          className="monogram inline-flex min-h-[44px] shrink-0 items-center text-[15px] text-text transition-colors hover:text-accent sm:text-[17px]"
+        >
+          AMMAR
+        </Link>
 
         <nav aria-label="Main" className="hidden items-center gap-6 sm:flex">
           {site.nav.map((item) => (
@@ -29,13 +50,15 @@ export function Topbar() {
           ))}
         </nav>
 
+        {/* Slightly smaller on phones so it does not crowd the monogram;
+            unchanged from `sm` up, which is the size the request settled on. */}
         <a
           href="/cv/ammar-hilmy-ramzy-cv.pdf"
           download
-          className="hover-zoom-sm inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-btn)] border-2 border-accent bg-accent px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.06em] text-ink shadow-[4px_4px_0_0_var(--color-border)]"
+          className="hover-zoom-sm inline-flex min-h-[44px] shrink-0 items-center gap-1.5 rounded-[var(--radius-btn)] border-2 border-accent bg-accent px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.04em] text-ink shadow-[3px_3px_0_0_var(--color-border)] sm:gap-2 sm:px-4 sm:text-[12px] sm:tracking-[0.06em] sm:shadow-[4px_4px_0_0_var(--color-border)]"
         >
           Download CV
-          <Download className="h-3.5 w-3.5" aria-hidden="true" />
+          <Download className="h-3 w-3 sm:h-3.5 sm:w-3.5" aria-hidden="true" />
         </a>
       </div>
     </header>
