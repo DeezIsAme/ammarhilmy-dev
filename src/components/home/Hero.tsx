@@ -21,7 +21,7 @@ export function Hero() {
   return (
     <section className="grid items-center gap-8 pt-14 pb-4 lg:grid-cols-[1fr_260px]">
       <div>
-        <h1 className="max-w-[18ch] text-[40px] leading-[0.95] font-bold tracking-tight text-text sm:text-[56px]">
+        <h1 className="max-w-[24ch] text-[40px] leading-[1.02] font-bold tracking-[0.01em] text-text sm:text-[52px]">
           {profile.name}
         </h1>
 

@@ -32,7 +32,7 @@ export function Topbar() {
         <a
           href="/cv/ammar-hilmy-ramzy-cv.pdf"
           download
-          className="hover-zoom-sm inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-btn)] border-2 border-accent bg-accent px-4 py-2 font-mono text-[11px] uppercase tracking-wider text-ink shadow-[4px_4px_0_0_var(--color-border)]"
+          className="hover-zoom-sm inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-btn)] border-2 border-accent bg-accent px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.06em] text-ink shadow-[4px_4px_0_0_var(--color-border)]"
         >
           Download CV
           <Download className="h-3.5 w-3.5" aria-hidden="true" />

@@ -21,7 +21,7 @@ export function Glance() {
   return (
     <div className="flex flex-col gap-6">
       <div className="max-w-[68ch]">
-        <p className="text-[20px] font-bold tracking-tight text-text">{glance.lead}</p>
+        <p className="text-[20px] font-bold tracking-[0.01em] text-text">{glance.lead}</p>
 
         <div className="mt-4 space-y-4">
           {glance.paragraphs.map((paragraph) => (

@@ -1,8 +1,9 @@
 /**
  * Root layout — fonts, metadata, JSON-LD, and the page shell.
  *
- * Fonts are self-hosted by next/font: no request ever leaves for Google Fonts,
- * and there is no layout shift while a font loads.
+ * The typeface is self-hosted by next/font from src/fonts: no request leaves
+ * for a font CDN, and there is no layout shift while it loads. See
+ * src/fonts/font.ts for the subsetting rationale.
  *
  * The JSON-LD Person block intentionally omits `telephone`. The phone number is
  * available as a visible WhatsApp link only, so it cannot be harvested as
@@ -10,18 +11,12 @@
  */
 
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
+import { zzz } from "@/fonts/font";
 import { profile } from "@/data/profile";
 import { site } from "@/data/site";
 import { Topbar } from "@/components/layout/Topbar";
 import { Footer } from "@/components/layout/Footer";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -76,7 +71,7 @@ const personSchema = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-palette="retro" className={inter.variable}>
+    <html lang="en" data-palette="retro" className={zzz.variable}>
       <body className="min-h-screen bg-base">
         <a
           href="#main"

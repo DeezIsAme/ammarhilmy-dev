@@ -12,7 +12,7 @@ export function ExperienceList() {
       {experience.map((entry) => (
         <Card key={entry.org} className="p-5">
           <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-            <h3 className="text-[20px] font-bold tracking-tight text-text">{entry.org}</h3>
+            <h3 className="text-[20px] font-bold tracking-[0.01em] text-text">{entry.org}</h3>
             <span className="font-mono text-[11px] uppercase tracking-wider text-muted">
               {entry.location}
             </span>

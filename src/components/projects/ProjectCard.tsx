@@ -27,7 +27,7 @@ export function ProjectCard({ project }: { project: Project }) {
           {project.period} · {project.category}
         </span>
 
-        <h3 className="mt-2 text-[20px] font-bold tracking-tight text-text">{project.title}</h3>
+        <h3 className="mt-2 text-[20px] font-bold tracking-[0.01em] text-text">{project.title}</h3>
 
         <p className="mt-1 font-mono text-[11px] uppercase tracking-wider text-muted">
           Role: {project.role}
