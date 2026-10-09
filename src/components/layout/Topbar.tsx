@@ -19,24 +19,55 @@
  * of the six-token palette, and it must read as "available" in every palette.
  */
 
-import Link from "next/link";
+"use client";
+
+import { usePathname, useRouter } from "next/navigation";
+import type { MouseEvent } from "react";
 import { profile } from "@/data/profile";
 import { site } from "@/data/site";
 import { Download } from "@/components/ui/Icon";
 import { NavLink } from "@/components/layout/NavLink";
+import { animateScrollTo } from "@/lib/scroll";
 
 export function Topbar() {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  /**
+   * Clicking the monogram returns to the top of the page, animated.
+   *
+   * On a sub-route that is genuinely a navigation, so the router handles it and
+   * the new page starts at the top. On the homepage the page is already there,
+   * so we animate the scroll ourselves — letting Next.js re-navigate would
+   * discard the current scroll position and the movement would never be seen.
+   */
+  function handleMonogramClick(event: MouseEvent<HTMLAnchorElement>) {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) {
+      return;
+    }
+
+    if (pathname !== "/") {
+      return; // let the router navigate normally
+    }
+
+    event.preventDefault();
+    animateScrollTo(0);
+    // Drop any section hash so the address bar matches where we actually are.
+    window.history.replaceState(null, "", "/");
+  }
+
   return (
     <header className="sticky top-0 z-40 border-b-2 border-border bg-base/90 backdrop-blur">
       <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-3 px-4 py-2 sm:gap-4 sm:px-5">
 
-        <Link
+        <a
           href="/"
-          aria-label={`${profile.name} — home`}
+          onClick={handleMonogramClick}
+          aria-label={`${profile.name} — back to top`}
           className="monogram inline-flex min-h-[44px] shrink-0 items-center text-[15px] text-text transition-colors hover:text-accent sm:text-[17px]"
         >
           AMMAR
-        </Link>
+        </a>
 
         <nav aria-label="Main" className="hidden items-center gap-6 sm:flex">
           {site.nav.map((item) => (

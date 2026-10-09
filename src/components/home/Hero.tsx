@@ -1,15 +1,22 @@
 /**
  * Hero — the front door.
  *
- * Layout: a two-column grid on desktop (text, then a 260px photo), collapsing to
- * one column on mobile with the photo first. One <h1>, a rotating role line, a
- * positioning sentence, and two calls to action.
+ * One grid with explicit placement, so a single <Image> serves both
+ * arrangements instead of the photo being rendered twice and hidden by CSS.
  *
- * Headline size is 56px on desktop — one of exactly three headline sizes used
- * site-wide. The paragraph is capped at ~62 characters per line for readability.
+ *   mobile (< lg)                desktop (>= lg)
+ *   +---------------------+      +-----------------+--------+
+ *   | name  (spans 2)     |      | name            |        |
+ *   | role+summary | photo|      | role + summary  | photo  |
+ *   | buttons (spans 2)   |      | buttons         |        |
+ *   +---------------------+      +-----------------+--------+
  *
- * The photo uses object-cover inside a fixed square box, so a portrait or a
- * landscape file both fill correctly with no layout change.
+ * The photo column is 36% on mobile so it scales with the viewport rather than
+ * sitting at a fixed width on a 320px screen, and a fixed 260px from `lg`.
+ *
+ * Headline is 40px on mobile and 52px from `sm` — one of exactly three headline
+ * sizes used site-wide. The paragraph is capped at ~62 characters per line for
+ * readability, and steps down to 15px on mobile where its column is narrower.
  */
 
 import Image from "next/image";
@@ -19,51 +26,59 @@ import { RoleRotator } from "@/components/home/RoleRotator";
 
 export function Hero() {
   return (
-    <section className="grid items-center gap-8 pt-14 pb-4 lg:grid-cols-[1fr_260px]">
-      <div>
-        <h1 className="max-w-[24ch] text-[40px] leading-[1.02] font-bold tracking-[0.01em] text-text sm:text-[52px]">
-          {profile.name}
-        </h1>
+    <section
+      className="grid grid-cols-[minmax(0,1fr)_36%] items-start gap-x-4 pt-14 pb-4
+                 lg:grid-cols-[1fr_260px] lg:items-center lg:gap-x-8"
+    >
+      <h1 className="col-span-2 col-start-1 row-start-1 max-w-[24ch] text-[40px] leading-[1.02] font-bold tracking-[0.01em] text-text sm:text-[52px] lg:col-span-1">
+        {profile.name}
+      </h1>
 
-        <div className="mt-5">
-          <RoleRotator roles={profile.roles} />
-        </div>
+      <div className="col-start-1 row-start-2 mt-5 min-w-0">
+        <RoleRotator roles={profile.roles} />
 
-        <p className="mt-5 max-w-[62ch] text-[16px] leading-relaxed text-muted">
+        <p className="mt-4 max-w-[62ch] text-[15px] leading-relaxed text-muted lg:mt-5 lg:text-[16px]">
           {profile.summary}
         </p>
-
-        <div className="mt-8 flex flex-wrap items-center gap-3">
-          <a
-            href="#projects"
-            className="hover-zoom-sm inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-btn)] border-2 border-accent bg-accent px-5 py-2.5 text-[14px] font-semibold text-ink shadow-[4px_4px_0_0_var(--color-border)]"
-          >
-            View projects
-            <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-          </a>
-          <a
-            href="/resume"
-            className="hover-zoom-sm inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-btn)] border-2 border-border px-5 py-2.5 text-[14px] font-semibold text-text shadow-[4px_4px_0_0_var(--color-accent)]"
-          >
-            Download CV
-            <Download className="h-4 w-4" aria-hidden="true" />
-          </a>
-        </div>
       </div>
 
-      {/* Frame matches the photo's own ratio (3:4, a standard formal-photo
-          format) rather than forcing the photo into a square. `object-cover`
-          on a square frame had to cut ~120px off the top and bottom of a
-          1124x1365 portrait, which took the top of the head with it.
-          To go back to a square frame instead, change this back to
-          `aspect-square` — the photo would need cropping to 1:1 first. */}
-      <div className="hover-zoom order-first w-[180px] shrink-0 overflow-hidden rounded-[var(--radius-card)] border-2 border-border bg-surface shadow-[4px_4px_0_0_var(--color-accent)] lg:order-last lg:w-full">
+      {/* Two equal columns on a phone, auto width from `sm` up.
+          The wireframe shows the buttons side by side. At their desktop size
+          (14px text, 20px padding) the pair needs 370px, but a 375px phone only
+          has 335px to give — so on mobile they shrink to 13px text with 12px
+          padding and share the row evenly. That keeps them side by side at any
+          width instead of collapsing to a stack below some breakpoint. */}
+      <div className="col-span-2 col-start-1 row-start-3 mt-6 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:items-center lg:col-span-1 lg:mt-8">
+        <a
+          href="#projects"
+          className="hover-zoom-sm inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-[var(--radius-btn)] border-2 border-accent bg-accent px-3 py-2.5 text-[13px] font-semibold text-ink shadow-[4px_4px_0_0_var(--color-border)] sm:gap-2 sm:px-5 sm:text-[14px]"
+        >
+          View projects
+          <ArrowUpRight className="h-4 w-4 shrink-0" aria-hidden="true" />
+        </a>
+        <a
+          href="/resume"
+          className="hover-zoom-sm inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-[var(--radius-btn)] border-2 border-border px-3 py-2.5 text-[13px] font-semibold text-text shadow-[4px_4px_0_0_var(--color-accent)] sm:gap-2 sm:px-5 sm:text-[14px]"
+        >
+          Download CV
+          <Download className="h-4 w-4 shrink-0" aria-hidden="true" />
+        </a>
+      </div>
+
+      {/* Frame follows the photo's own ratio (3:4, a standard formal-photo
+          format) rather than forcing it into a square. `object-cover` on a
+          square frame had to cut 241px off the height of a 1024x1365 portrait,
+          which took the top of the head with it. To go back to a square frame,
+          change this to `aspect-square` — the photo would need cropping to 1:1
+          first. On desktop the photo spans the three text rows and is centred;
+          on mobile it sits beside the role line and description. */}
+      <div className="hover-zoom col-start-2 row-start-2 mt-5 w-full overflow-hidden rounded-[var(--radius-card)] border-2 border-border bg-surface shadow-[4px_4px_0_0_var(--color-accent)] lg:row-span-3 lg:row-start-1 lg:mt-0">
         <div className="relative aspect-[3/4] w-full">
           <Image
             src="/profile.jpg"
             alt={`${profile.name} — profile photo`}
             fill
-            sizes="260px"
+            sizes="(max-width: 1023px) 36vw, 260px"
             className="object-cover object-center"
             priority
           />
