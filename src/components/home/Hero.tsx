@@ -51,8 +51,14 @@ export function Hero() {
         </div>
       </div>
 
+      {/* Frame matches the photo's own ratio (3:4, a standard formal-photo
+          format) rather than forcing the photo into a square. `object-cover`
+          on a square frame had to cut ~120px off the top and bottom of a
+          1124x1365 portrait, which took the top of the head with it.
+          To go back to a square frame instead, change this back to
+          `aspect-square` — the photo would need cropping to 1:1 first. */}
       <div className="hover-zoom order-first w-[180px] shrink-0 overflow-hidden rounded-[var(--radius-card)] border-2 border-border bg-surface shadow-[4px_4px_0_0_var(--color-accent)] lg:order-last lg:w-full">
-        <div className="relative aspect-square w-full">
+        <div className="relative aspect-[3/4] w-full">
           <Image
             src="/profile.jpg"
             alt={`${profile.name} — profile photo`}
