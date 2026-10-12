@@ -182,8 +182,16 @@
    One shared utility rather than a scale class sprinkled on each element, so
    every surface grows by the same amount and at the same speed.
 
-   Guarded by `@media (hover: hover)` because a touch device has no hover to
-   leave: without the guard, tapping a card would leave it stuck enlarged.
+   Two devices, two triggers:
+
+     - a mouse gets `:hover`, which fires on entry and releases on exit
+     - a touchscreen has no pointer to leave, so `:hover` would latch on and
+       leave the surface stuck enlarged until the visitor tapped something
+       else. It gets `:active` instead, which releases the moment the finger
+       lifts — the closest a touchscreen has to a hover.
+
+   Both are gated on the media query that describes them, so neither device
+   ever receives the other's rule.
 
    Disabled under prefers-reduced-motion — the rest of the site already honours
    that setting, and a moving target is exactly what it is meant to avoid.
@@ -210,9 +218,32 @@
   }
 }
 
+/* Touch devices: press and hold to grow. Shorter than the hover transition
+   because a press is a deliberate, immediate gesture. */
+@media (hover: none) {
+  .hover-zoom,
+  .hover-zoom-sm {
+    transition:
+      transform 160ms ease-out,
+      box-shadow 160ms ease-out,
+      border-color 160ms ease-out,
+      color 160ms ease-out;
+  }
+
+  .hover-zoom:active {
+    transform: scale(1.02);
+  }
+
+  .hover-zoom-sm:active {
+    transform: scale(1.05);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hover-zoom:hover,
-  .hover-zoom-sm:hover {
+  .hover-zoom-sm:hover,
+  .hover-zoom:active,
+  .hover-zoom-sm:active {
     transform: none;
   }
 }
