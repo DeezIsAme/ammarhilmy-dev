@@ -21,25 +21,29 @@
 
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import type { MouseEvent } from "react";
 import { profile } from "@/data/profile";
 import { site } from "@/data/site";
 import { Download } from "@/components/ui/Icon";
 import { NavLink } from "@/components/layout/NavLink";
+import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { animateScrollTo } from "@/lib/scroll";
 
 export function Topbar() {
-  const router = useRouter();
   const pathname = usePathname();
 
   /**
    * Clicking the monogram returns to the top of the page, animated.
    *
-   * On a sub-route that is genuinely a navigation, so the router handles it and
-   * the new page starts at the top. On the homepage the page is already there,
-   * so we animate the scroll ourselves — letting Next.js re-navigate would
-   * discard the current scroll position and the movement would never be seen.
+   * On a sub-route that is genuinely a navigation, so we fall through and let
+   * <Link> handle it — client-side, with the route progress bar running. A
+   * plain <a> here would have triggered a full document reload instead.
+   *
+   * On the homepage the page is already there, so we take the click and animate
+   * the scroll ourselves; letting the router re-navigate would discard the
+   * current scroll position and the movement would never be seen.
    */
   function handleMonogramClick(event: MouseEvent<HTMLAnchorElement>) {
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) {
@@ -47,7 +51,7 @@ export function Topbar() {
     }
 
     if (pathname !== "/") {
-      return; // let the router navigate normally
+      return; // <Link> navigates client-side from here
     }
 
     event.preventDefault();
@@ -60,14 +64,14 @@ export function Topbar() {
     <header className="sticky top-0 z-40 border-b-2 border-border bg-base/90 backdrop-blur">
       <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-3 px-4 py-2 sm:gap-4 sm:px-5">
 
-        <a
+        <Link
           href="/"
           onClick={handleMonogramClick}
           aria-label={`${profile.name} — back to top`}
           className="monogram inline-flex min-h-[44px] shrink-0 items-center text-[15px] text-text transition-colors hover:text-accent sm:text-[17px]"
         >
           AMMAR
-        </a>
+        </Link>
 
         <nav aria-label="Main" className="hidden items-center gap-6 sm:flex">
           {site.nav.map((item) => (
@@ -92,6 +96,11 @@ export function Topbar() {
           <Download className="h-3 w-3 sm:h-3.5 sm:w-3.5" aria-hidden="true" />
         </a>
       </div>
+
+      {/* Sits on the header's bottom edge, so it reads as the header's own
+          underline rather than a separate floating element. The header is the
+          positioned ancestor, which is what `absolute` resolves against. */}
+      <ScrollProgress />
     </header>
   );
 }

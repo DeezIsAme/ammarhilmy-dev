@@ -20,6 +20,7 @@
  */
 
 import Image from "next/image";
+import Link from "next/link";
 import { profile } from "@/data/profile";
 import { ArrowUpRight, Download } from "@/components/ui/Icon";
 import { RoleRotator } from "@/components/home/RoleRotator";
@@ -56,13 +57,16 @@ export function Hero() {
           View projects
           <ArrowUpRight className="h-4 w-4 shrink-0" aria-hidden="true" />
         </a>
-        <a
+        {/* <Link>, not <a>: /resume is an internal route, and a plain anchor
+            makes the browser do a full document reload instead of a client-side
+            navigation — slower, and the route progress bar never gets to run. */}
+        <Link
           href="/resume"
           className="hover-zoom-sm inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-[var(--radius-btn)] border-2 border-border px-3 py-2.5 text-[13px] font-semibold text-text shadow-[4px_4px_0_0_var(--color-accent)] sm:gap-2 sm:px-5 sm:text-[14px]"
         >
           Download CV
           <Download className="h-4 w-4 shrink-0" aria-hidden="true" />
-        </a>
+        </Link>
       </div>
 
       {/* Frame follows the photo's own ratio (3:4, a standard formal-photo
